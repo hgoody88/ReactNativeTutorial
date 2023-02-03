@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, FlatList, Alert} from 'react-native'
+import { View, Text, StyleSheet, FlatList, Alert, TouchableWithoutFeedback, Keyboard} from 'react-native'
 import React, { useState} from 'react'
 import Header from './Header'
 import DailyThingItem, { IDailyThing } from './DailyThingItem'
@@ -44,24 +44,31 @@ export default function DailyThingTracker() {
     }
 
   return (
-    <View style={styles.container}>
-        <Header />
-        <View style={styles.content}>
-            <AddThing
-                addThingToDailys={addThingToDailys}
-            />
-            <FlatList
-                style={styles.list}
-                data={dailyThings}
-                renderItem={({ item }) => (
-                    <DailyThingItem
-                        thing={item}
-                        pressHandler={pressHandler}
-                    />
-                )}
-            />
+    <TouchableWithoutFeedback
+        onPress={() => {
+            Keyboard.dismiss()
+            console.log('dismissed!')
+        }}
+    >
+        <View style={styles.container}>
+            <Header />
+            <View style={styles.content}>
+                <AddThing
+                    addThingToDailys={addThingToDailys}
+                />
+                <FlatList
+                    style={styles.list}
+                    data={dailyThings}
+                    renderItem={({ item }) => (
+                        <DailyThingItem
+                            thing={item}
+                            pressHandler={pressHandler}
+                        />
+                    )}
+                />
+            </View>
         </View>
-    </View>
+    </TouchableWithoutFeedback>
   )
 }
 
