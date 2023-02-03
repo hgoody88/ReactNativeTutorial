@@ -1,6 +1,11 @@
-import { View, Text, StyleSheet, TextInput, Button, ScrollView, FlatList } from 'react-native'
+import { View, Text, StyleSheet, TextInput, Button, ScrollView, FlatList, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { useState } from 'react'
+
+interface Player {
+    name: string,
+    position: number
+}
 
 
 export default function Lists() {
@@ -30,6 +35,11 @@ export default function Lists() {
         ])    
     }
 
+    const pressHandler = (key: number) => {
+        console.log(key)
+        setPlayers(players => players.filter(value => value.key != key))
+    }
+
     players.sort((fst, snd) => fst.key - snd.key)
 
     return (
@@ -38,7 +48,7 @@ export default function Lists() {
                 <Text style={styles.title}>England Rugby Greatest XV</Text>
             </View>
 
-            <View style={styles.body}>
+            {/* <View style={styles.body}>
                 <ScrollView>
                     {players.map(player => (
                             <View 
@@ -50,15 +60,18 @@ export default function Lists() {
                         )
                     )}
                 </ScrollView>
-            </View>
+            </View> */}
 
             {/* or */}
 
             {/* Only renders visiable items from list => better */}
             <FlatList
+                numColumns={2}
                 data={players}
                 renderItem={({ item }) => (
-                    <Text style={styles.player}>{item.name}</Text>
+                    <TouchableOpacity onPress={() => pressHandler(item.key)}>
+                        <Text style={styles.player}>{item.key}: {item.name}</Text>
+                    </TouchableOpacity>
                 )}
             />
 
@@ -123,6 +136,7 @@ const styles = StyleSheet.create({
     },
     player: {
         marginTop: 24,
+        marginHorizontal: 10,
         padding: 30,
         backgroundColor: 'pink',
         fontSize: 24
