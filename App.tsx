@@ -4,6 +4,7 @@ import { useState } from 'react'
 import BasicInputPage from './src/BasicInputPage'
 import Lists from './src/Lists'
 import DailyThingTracker from './src/DailyThingTracker/DailyThingTracker'
+import Sandbox from './src/FlexSandbox/Sandbox'
 
 export default function App() {
   return (

@@ -1,5 +1,6 @@
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
+import { MaterialIcons } from '@expo/vector-icons'
 
 export interface IDailyThing {
     info: string,
@@ -14,7 +15,10 @@ export interface Props {
 export default function DailyThingItem( {thing, pressHandler}: Props ) {
     return (
       <TouchableOpacity onPress={() => pressHandler(thing.id)}>
-        <Text style={styles.thing}>{thing.id}: {thing.info}</Text>
+        <View style={styles.thing}>
+          <MaterialIcons name="delete" size={24} color="grey" />
+          <Text>{thing.id}: {thing.info}</Text>
+        </View>
       </TouchableOpacity>
     )
 }
@@ -26,6 +30,9 @@ const styles = StyleSheet.create({
     borderColor: '#bbb',
     borderWidth: 1,
     borderStyle: 'dashed',
-    borderRadius: 10
+    borderRadius: 10,
+
+    flexDirection: 'row-reverse',
+    justifyContent: 'space-between'
   }
 })

@@ -4,7 +4,6 @@ import Header from './Header'
 import DailyThingItem, { IDailyThing } from './DailyThingItem'
 import AddThing from './AddThing'
 
-
 export default function DailyThingTracker() {
 
     const [dailyThings, setDailyThings] = useState<IDailyThing[]>([
@@ -79,12 +78,13 @@ const styles = StyleSheet.create({
     },
     content: {
         padding: 40,
+        flex: 1
     },
     list: {
-        marginTop: 20
+        marginTop: 20,
+        flex: 1
     },
     dailyThing: {
-        backgroundColor: 'pink',
         marginHorizontal: 10
     }
 })
