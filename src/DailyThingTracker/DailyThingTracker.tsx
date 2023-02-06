@@ -46,7 +46,6 @@ export default function DailyThingTracker() {
     <TouchableWithoutFeedback
         onPress={() => {
             Keyboard.dismiss()
-            console.log('dismissed!')
         }}
     >
         <View style={styles.container}>
