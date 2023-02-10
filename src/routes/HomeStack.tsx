@@ -16,28 +16,10 @@ export type RootStackParamList = {
 export type ReviewDetailsScreenProp = NativeStackNavigationProp<RootStackParamList, 'reviewDetails'>
 export type ReviewDetailsRouteProp = RouteProp<RootStackParamList, 'reviewDetails'>
 
-const screens = {
-  Home: {
-    screen: Home,
-    navigationOptions: {
-      title: 'Players',
-      headerStyle: { backgroundColor: '#eee'}
-    }
-  },
-  ReviewDetails: {
-    screen: ReviewDetails,
-    navigationOptions: {
-      title: 'Player Review Details',
-      headerStyle: { backgroundColor: 'red'}
-    }
-  }
-}
-
 const Stack = createNativeStackNavigator<RootStackParamList>()
 
 const HomeStack = () => {
   return (
-    <NavigationContainer>
       <Stack.Navigator
         initialRouteName='home'
         screenOptions={{
@@ -51,7 +33,6 @@ const HomeStack = () => {
         <Stack.Screen name='home' component={Home}/>
         <Stack.Screen name='reviewDetails' component={ReviewDetails}/>
       </Stack.Navigator>
-    </NavigationContainer>
   )
 }
 

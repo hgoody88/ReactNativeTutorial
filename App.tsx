@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar'
 import { StyleSheet, Text, View, Button, TextInput } from 'react-native'
 import { useState, useEffect, useCallback } from 'react'
@@ -10,6 +11,7 @@ import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import * as Font from 'expo-font'
 import HomeStack from './src/routes/homeStack'
+import Drawer from './src/routes/Drawer'
 
 SplashScreen.preventAutoHideAsync();
 
@@ -52,7 +54,7 @@ export default function App() {
 
   if(appIsReady) {
     return (
-      <HomeStack />
+      <Drawer />
     )
   }
   else {
