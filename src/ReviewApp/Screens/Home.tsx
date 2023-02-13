@@ -6,6 +6,7 @@ import { FlatList } from 'react-navigation'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { StackNavigationProp } from '@react-navigation/stack/lib/typescript/src/types'
 import { RootStackParamList } from '../../routes/homeStack'
+import Card from '../../shared/Card'
 
 type homeScreenProp = StackNavigationProp<RootStackParamList, 'home'>
 
@@ -13,15 +14,16 @@ export interface player {
   key: number,
   name: string,
   rating: number,
-  summary: string
+  summary: string,
+  imageSource?: string,
 }
 
 export default function Home() {
 
   const [players, setPlayers] = useState<player[]>([
-    {key: 0, name: 'Genge', rating: 9, summary: 'he is always great'},
-    {key: 1, name: 'Faz', rating: 9, summary: 'all time legend'},
-    {key: 2, name: 'Smith', rating: 8, summary: 'was really good'},
+    {key: 0, name: 'Genge', rating: 9, summary: 'he is always great', imageSource: 'genge.png'},
+    {key: 1, name: 'Faz', rating: 9, summary: 'all time legend', imageSource: 'faz.png'},
+    {key: 2, name: 'Smith', rating: 7, summary: 'seems to struggle'},
     {key: 3, name: 'Ludlham', rating: 8, summary: 'so physical'},
   ])
 
@@ -38,7 +40,9 @@ export default function Home() {
             style={styles.player}
           >
             <TouchableOpacity onPress={() => navigation.navigate('reviewDetails', {player})}>
-              <Text>{player.name}</Text>
+              <Card>
+                <Text>{player.name}</Text>
+              </Card>
             </TouchableOpacity>
           </View>
         )
@@ -49,9 +53,6 @@ export default function Home() {
 
 const styles = StyleSheet.create({
   player: {
-    padding: 20,
-    borderWidth: 1,
-    borderStyle: 'dashed',
     marginTop: 10
   }
 })
